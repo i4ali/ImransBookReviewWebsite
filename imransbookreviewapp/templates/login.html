@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block heading %}
+    Imrans Book Review - Login
+{% endblock %}
+{% block body %}
+    <form action="{{ url_for('login') }}" method="post">
+        <div>
+            <input name="name" placeholder="user name">
+        </div>
+        <div>
+            <input name="password" placeholder="password">
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+{% endblock %}

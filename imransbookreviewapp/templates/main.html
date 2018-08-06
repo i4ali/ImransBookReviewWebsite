@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block heading %}
+    Search Books
+{% endblock %}
+{% block body %}
+    <form action="{{ url_for('books') }}" method="post">
+        <div>
+            <input name="search" placeholder="ISBN,Title or Author">
+            <button>Submit</button>
+        </div>
+    </form>
+{% endblock %}
+{% block logout %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}

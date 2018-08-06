@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block heading %}
+    Books
+{% endblock %}
+{% block body %}
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
