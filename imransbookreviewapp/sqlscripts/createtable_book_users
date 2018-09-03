@@ -1,0 +1,8 @@
+CREATE TABLE book_users(
+    book_id INTEGER REFERENCES books (id) ON UPDATE CASCADE ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE.
+    comment VARCHAR,
+    rating INTEGER,
+    CONSTRAINT book_users_pkey PRIMARY KEY (book_id, user_id)
+);
+

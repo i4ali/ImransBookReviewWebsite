@@ -5,7 +5,12 @@
 {% block body %}
     <ul>
         {% for book in books %}
-            <li>{{ book.title }}</li>
+            <li>
+                <a href="{{ url_for('bookdetails', title = book.title) }}">{{ book.title }}</a>
+            </li>
         {% endfor %}
     </ul>
+{% endblock %}
+{% block logout %}
+    <a href="{{ url_for('logout') }}">Logout</a>
 {% endblock %}
