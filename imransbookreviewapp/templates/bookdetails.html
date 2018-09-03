@@ -16,12 +16,28 @@
         <li>
             ISBN Number: {{ bookandreviews[0].isbn }}
         </li>
-        Reviews:
+        <li>
+            Reviews:
+        </li>
+        <ol>
         {% for review in bookandreviews[1] %}
             <li>
                 {{ review.name }} , {{ review.comment }} , {{ review.rating }}
             </li>
         {% endfor %}
+        </ol>
+        <li>
+            Goodreads Reviews:
+            <ol>
+                <li>
+                    Average Rating: {{ bookandreviews[2] }}
+                </li>
+                <li>
+                    Work Rating Count: {{ bookandreviews[3] }}
+                </li>
+            </ol>
+        </li>
+
     </ul>
     <form action="{{ url_for('bookdetails', title = bookandreviews[0].title) }}" method="post">
         <div>

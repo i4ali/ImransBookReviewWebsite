@@ -53,7 +53,7 @@ def login():
     return redirect(url_for("index"))
 
 
-@app.route("/search", methods=["POST"])
+@app.route("/searchresults", methods=["POST"])
 def books():
     search = request.form.get("search")
     # search doesnt return any result
@@ -79,7 +79,13 @@ def bookdetails(title):
         # reviews = db.execute("SELECT user_id,comment,rating from book_users where book_id = :book_id and comment is not NULL", {"book_id": book.id}).fetchall()
         reviews = db.execute("SELECT BU.user_id, U.name, BU.comment, BU.rating from book_users BU JOIN "
                    "users U ON BU.user_id = U.id and BU.comment is not NULL and BU.book_id = :book_id", {"book_id": book.id}).fetchall()
-        return render_template("bookdetails.html", bookandreviews=[book, reviews])
+        goodread = requests.get("https://www.goodreads.com/book/review_counts.json",
+                     params={"key": "xdkayXsFDOp6XyzrVLrGRw", "isbns": book.isbn})
+        goodread = goodread.json()
+        average_rating = goodread['books'][0]['average_rating']
+        work_ratings_count = goodread['books'][0]['work_ratings_count']
+
+        return render_template("bookdetails.html", bookandreviews=[book, reviews, average_rating, work_ratings_count])
 
 
 if __name__ == '__main__':
