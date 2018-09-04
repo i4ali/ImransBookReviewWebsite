@@ -3,7 +3,7 @@
     Book Details
 {% endblock %}
 {% block body %}
-    <ul>
+    <ul class="list-group">
         <li>
             Title: {{ bookandreviews[0].title }}
         </li>
@@ -39,10 +39,10 @@
         </li>
 
     </ul>
-    <form action="{{ url_for('bookdetails', title = bookandreviews[0].title) }}" method="post">
+    <form class="form-group" action="{{ url_for('bookdetails', title = bookandreviews[0].title) }}" method="post">
         <div>
-            <input name="review" placeholder="Enter review">
-            <button>Submit</button>
+            <input name="review" class="form-control" placeholder="Enter review">
+            <button class="btn btn-primary">Submit</button>
         </div>
     </form>
 {% endblock %}
